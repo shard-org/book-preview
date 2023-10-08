@@ -1,0 +1,25 @@
+<!doctype html><html lang=en><head><title>Fibonacci</title><meta name=viewport content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css?family=Open Sans&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css?family=Fira Code&display=swap" rel=stylesheet><link href=/book-preview/2/css/style.min.css rel=stylesheet></head><body style=margin:0><div id=page><header><div style=flex:1><img src=/book-preview/2/svg/title.min.svg style=float:left;height:4rem alt=Shard></div><div><h2 class=faded>Language Guide</h2></div><div style=flex:1><a href=https://github.com/shard-org/shard target=_blank><img src=/book-preview/2/svg/github.min.svg style=float:right;width:4rem;height:4rem class=nav alt=GitHub></a></div></header><div id=body><aside><nav><div style=margin:8px class=nav>Introduction<ol style=margin:0><li style=margin:4px class=nav><a href=/book-preview/2/introduction/introduction/ class=nav>Introduction</a></li></ol></div><div style=margin:8px class=nav>Language Guide<ol style=margin:0><li style=margin:4px class=nav><a href=/book-preview/2/language-guide/getting-started/ class=nav>Getting Started</a></li><li style=margin:4px class=faded>Fibonacci</li></ol></div><div style=margin:8px class=nav>Language Specification<ol style=margin:0><li style=margin:4px class=nav><a href=/book-preview/2/language-specification/language-specification/ class=nav>Language Specification</a></li></ol></div></nav></aside><main><h2 id=fibonacci>Fibonacci</h2><pre tabindex=0><code>@fib n 2 -&gt; [:1] {
+    (n &lt; 1) =&gt; end &#34;Invalid Number of Terms!\0&#34;
+    (n = 1) =&gt; end &#34;0\0&#34;
+    (n = 2) =&gt; end &#34;0 1\0&#34;
+
+    %arg1 2 = 1
+    %arg2 2 = 0
+
+#loop
+    ;temp = ([arg1] + [arg2])
+
+    &#39;arg2 : arg1
+    &#39;arg1 : temp
+
+    $printf &#34;%d\n\0&#34;, temp 
+    &#39;n --
+    (n &gt; 0) =&gt; jmp loop
+
+    end &#34;Done!\0&#34;
+}
+
+#main
+    $puts &lt;- *fib 9
+    &amp;ext 0
+</code></pre></main></div></div></body></html>
